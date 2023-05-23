@@ -40,22 +40,24 @@ else:
         }
     }
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '127.0.0.1').split(',')
 
-MAIL_RECIPIENT = 'antwaneolee@gmail.com'
+MAIL_RECIPIENT = os.getenv('DJANGO_MAIL_RECIPIENT')
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'solarshrine.contact@gmail.com'
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PWD')
+EMAIL_HOST_USER = os.getenv('DJANGO_EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('DJANGO_EMAIL_PWD')
 #EMAIL_USE_SSL = True
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv('DJANGO_DEBUG', False)
 
 
 # Application definition
@@ -142,11 +144,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-AWS_STORAGE_BUCKET_NAME = 'solarshrine'
+AWS_STORAGE_BUCKET_NAME = os.getenv('STATIC_BUCKET_NAME')
 AWS_S3_REGION_NAME = 'us-east-2'
 AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.genenv('AWS_SECRET_ACCESS_KEY')
-AWS_DEFAULT_ACL = None
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_DEFAULT_ACL = os.getenv('STATIC_DEFAULT_ACL')
 AWS_QUERYSTRING_AUTH = False
 
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.us-east-2.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
