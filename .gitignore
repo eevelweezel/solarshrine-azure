@@ -8,6 +8,7 @@ media/*
 static/*
 *.pem
 *env
+TODO
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
