@@ -41,12 +41,8 @@ else:
     }
 
 
-SECRET_KEY = os.getenv('SECRET_KEY')
-ALLOWED_HOSTS = ['.elasticbeanstalk.com',
-                 'solarshrine.org',
-                 'dualstack.awseb-e-i-awsebloa-xqmcc88j59et-2126510378.us-east-2.elb.amazonaws.com',
-                 'localhost',
-                 '127.0.0.1']
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '127.0.0.1').split(',')
 
 MAIL_RECIPIENT = 'antwaneolee@gmail.com'
 
@@ -59,7 +55,7 @@ EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 # Application definition
