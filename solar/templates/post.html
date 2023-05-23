@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<div class="fluid_container">
+{% if post.slug == 'donate' %}
+    <h4 class="text-center"><a class="btn btn-warning btn-lg" href="https://fundraising.fracturedatlas.org/the-solar-shrine-project" role="button">{{ post.title|safe }}</a>
+    </h4>
+{% else %}
+<h4><strong>{{ post.title|safe }}</strong></h4>
+{% endif %}
+<br>
+</div>
+{% if post.slug == 'design' %}
+<div class="fluid_container">
+<div class="embed-responsive embed-responsive-16by9">
+<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/cEiFrwBA9iw?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+</div>
+<br>
+{% endif %}
+<div class="fluid_container">
+{{ post.content|safe }}
+</div>
+{% block photos %}
+<div class="fluid_container">
+<div class="row">
+{% for i in images %}
+      <div class="col-lg-6">
+          <a href={{ MEDIA_URL }}{{ i.image }} data-lightbox="photos" data-title="{{ i.text }}"/><img src={{ MEDIA_URL }}{{ i.image }} alt="{{ i.text }}" class="card-img-top"/></a>
+         <p class="card-text">{{ i.text|safe }}</p>
+         <br>
+      </div>
+{% endfor %}
+</div>
+{% endblock %}
+{% endblock %}

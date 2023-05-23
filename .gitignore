@@ -1,0 +1,14 @@
+*.py[cod]
+*.swp
+.coverage
+db.sqlite3
+*/settings_local.py
+htmlcov
+media/*
+static/*
+*.pem
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="description" content="The Solar Shrine is an Afrofuturistic, interactive art installation which is inspired by the magical realism of Ancient Egypt and Nubia, destined for Burning Man 2020."/>
+<meta property="og:title" content="The Solar Shrine: Burning Man 2020"/>
+<meta property="og:image" content="{{ MEDIA_URL }}slides/Render3_Revised_20200111_Revised_Ratio_Web.jpg"/>
+<meta property="og:description" content="The Solar Shrine is an Afrofuturistic, interactive art installation destined for Burning Man 2020."/>
+<meta property="og:url" content="https://solarshrine.org"/>
+{% load static %}
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load fonts #}
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Lato:300&display=swap">
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+<!--  Camera_Slideshow Styles  -->
+<link rel='stylesheet' id='camera-css' href='{% static "css/camera.css" %}' type='text/css' media='all'>
+<!-- Camera Slideshow Scripts -->
+<script type='text/javascript' src='{% static "js/jquery-2.1.4.min.js" %}'></script>
+<script type='text/javascript' src='{% static "js/jquery.mobile.customized.min.js" %}'></script>
+<script type='text/javascript' src='{% static "js/jquery.easing.min.js" %}'></script>
+<script type='text/javascript' src='{% static "js/camera.min.js" %}'></script>
+<script type='text/javascript'>
+jQuery(function() {
+    jQuery('#camera_wrap_1').camera({
+        time: 5000, // milliseconds between the end of the sliding effect and the start of the nex one
+        transPeriod: 1200, // length of the sliding effect in milliseconds
+        thumbnails: false, // thumnails & tooltip is controlled by it
+        pagination: false, // only when "pagination" is set to "false" thumbnails will be visible
+        fx: 'scrollLeft', 
+// 'curtainTopLeft, curtainTopRight, curtainBottomLeft, curtainBottomRight, curtainSliceLeft, curtainSliceRight, blindCurtainTopLeft, blindCurtainTopRight, blindCurtainBottomLeft, blindCurtainBottomRight, blindCurtainSliceBottom, blindCurtainSliceTop, stampede, mosaic, mosaicReverse, mosaicRandom, mosaicSpiral, mosaicSpiralReverse, topLeftBottomRight, bottomRightTopLeft, bottomLeftTopRight, bottomLeftTopRight, scrollLeft, scrollRight, scrollHorz, scrollBottom, scrollTop', // transition effects
+        hover: true, // Pause on hover
+        height: '60%' // slideshow height (50% is default)
+    });
+});
+</script>
+<style type="text/css">
+.fluid_container {
+    margin: 0 auto;
+    /* align centered */
+    width: 100%;
+    max-width: 900px;
+    overflow: hidden;
+}
+h1 {
+    font-weight: bold;
+}
+h1, h2, h3, h4 {
+    text-align: center!important;
+}
+h3 {
+    font-style: italic;
+    font-size: 1.55rem;
+}
+body, a, p, h1, h2, h3, h4, span, legend, fieldset {
+    color: black !important;
+    font-family: Lato;
+}
+body {
+    -webkit-font-smoothing: antialiased;
+}
+.bg-light {
+    background-color: white !important;
+}
+.italic {
+    font-style: italic !important;
+}
+
+@media (max-device-width: 1200px) {
+  legend {
+    font-size: calc(1.275rem + 2vw);
+  }
+  h1,
+  .h1 {
+    font-size: calc(2.25rem + 2vw);
+  }
+  h2,
+  .h2 {
+    font-size: calc(2.0rem + 2vw);
+  }
+  h3,
+  .h3 {
+    font-size: calc(1.65rem + 2vw);
+  }
+  h4,
+  .h4 {
+    font-size: calc(1.65rem + 2vw);
+  }
+  .display-1 {
+    font-size: calc(1.725rem + 5.7vw);
+  }
+  .display-2 {
+    font-size: calc(1.675rem + 5.1vw);
+  }
+  .display-3 {
+    font-size: calc(1.575rem + 3.9vw);
+  }
+  .display-4 {
+    font-size: calc(1.475rem + 2.7vw);
+  }
+  .close {
+    font-size: calc(1.275rem + 0.3vw);
+  }
+  .nav-item {
+    font-size: calc(1.25rem + 3.5vw);
+    font-weight: 500;
+  }
+  p {
+    font-size: calc(1.25rem + 2vw);
+  }
+  span {
+    font-size: calc(1.25rem + 2vw);
+    height: calc(1.5rem + 2vw);
+  }
+  .btn-lg {
+    min-width: 300px;
+    font-size: calc(1.25rem + 2vw);
+  } 
+  .ytp-large-play-button {
+    min-width: calc(1.5rem + 2vw);
+  }
+  fieldset {
+    font-size: calc(1.25rem + 2vw);
+  }
+  .camera_pie, .camera_commands, 
+  .camera_next, .camera_prev, 
+  .camera_stop, .camera_play {
+    display: none !important;
+  }
+}   
+</style>
+</head>
+<body>
+<div class="fluid_container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav nav-fill w-100">
+<li class="nav-item menu-item">
+<a class-"nav-link" href="/">Home</a>
+</li>
+{% for p in posts %}
+<li class="nav-item menu-item">
+<a class-"nav-link" href="{% url 'show_post' p.slug %}">{{ p.link_text }}</a>
+</li>
+{% endfor %}
+<li class="nav-item menu-item">
+<a class-"nav-link" href="/contact/">Contact Us</a>
+</li>
+</ul>
+</nav>
+</div>
+<br>
+<br>
+<div class="fluid_container">
+<h1 class="text-center">The Solar Shrine</h1>
+<a href="/"><img class="img-fluid d-block mx-auto" src="{{MEDIA_URL}}website_logo_blk.png" vspace="10" alt="Solar Shrine Logo" style="height:50px;"/></a>
+<p class="text-center italic">Immerse Yourself in Afrofuturism<br>
+Honorarium Art Grant Selection for Burning Man 2022</span></p>
+</div>
+<br>
+{% block content %}
+{% endblock %}
+<br>
+<br>
+<div class="fluid_container">
+<p><a href='/'>Home</a> | <a href="https://www.facebook.com/The-Solar-Shrine-105276507676762"> Facebook </a> | <a href='https://fundraising.fracturedatlas.org/the-solar-shrine-project'>Donate Now</a> | Site by <a href="https://github.com/eevelweezel">Weezel</a>, 2019.</p>
+</div>
+</body>
+</html>

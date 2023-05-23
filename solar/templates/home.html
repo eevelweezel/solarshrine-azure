@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% block title %}
+{% endblock%}
+<br>
+{% block slideshow %}
+  <div class="fluid_container">
+    <div class="camera_wrap" id="camera_wrap_1">
+    <!-- camera_slideshow camera_wrap-->
+        {% for slide in slides %}
+             <div data-link="{{ MEDIA_URL }}{{ slide.image }}" data-thumb='{% static "images/slides/thumbs/{{ slide.image }}" %}' data-src="{{ MEDIA_URL }}{{ slide.image }}">
+               <!--  <div class="camera_caption fadeFromBottom">
+                    {# {{ slide.text }}#}
+                 </div>-->
+             </div>
+    {% endfor %}
+    </div>
+    <!-- #camera_wrap_1 -->
+  </div>
+<!-- .fluid_container -->
+{% endblock %}
+
+{% block text %}
+<br>
+<br>
+<div class="fluid_container">
+{% block donate %}
+</div>
+<div class="fluid_container">
+<h4 class="text-center"><a class="btn btn-warning btn-lg" href="https://fundraising.fracturedatlas.org/the-solar-shrine-project" role="button">Donate Now</a></h4>
+</div>
+{% endblock %}
+<br>
+<br>
+{% block video %}
+<div class="fluid_container">
+<div class="embed-responsive embed-responsive-16by9">
+<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/kCE_HpfrEuI?rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+</div>
+{% endblock %}
+<br>
+<br>
+<div class="fluid_container">
+<h4>What is the Solar Shrine?</h4>
+<p>The Solar Shrine is an Afrofuturistic, interactive art installation which is inspired by the magical realism of Ancient Egypt and Nubia. These two ancient cultures believed in Ra, the Sun God. Ra had metaphysical powers as the giver of life on Earth and creator of the universe. Ra was carried by the solar barque across the heavens during the day, assuming many manifestations. At night, the barque would then go through the underworld and different dimensions/realities, in preparation for Ra’s rebirth in the east. The ritual of the solar barque was simultaneously connected to the Ancient Egyptians and Nubians belief that darkness and death would transform their ancestors from being in the land of the living, to being reborn through Light or the Sun into other realms/dimensions of the afterlife.</p>
+<p>
+The piece itself is comprised of three structures. The entrance is the gateway, a tower through which people can enter The Solar Shrine. Atop this tower are four giant poofers, blasting flames into the sky. At the nexus between these four points is a solar disk, illuminated by the sunrise in the East. The main structure is a two-story shrine/observatory with an altar on the ground level, housing a solar barque carrying a second solar disk, also illuminated at sunrise. A stairway leads up to a second floor, open to the sky, with four continuously lit fire torches. The third structure is a shorter monument, housing the fuel needed. These three pieces together give the participants a way to experience the journey from the past, into the present, giving a vision of the future.</p>
+<p>The inspiration of this art installation comes from the experiences and environment in Africa. There is a global trend of people all over the world looking for ways to connect to our ancestors on physical and spiritual levels. As all of humanity traces back to Africa, we believe that this art installation can bring that connection of our shared past into our present, and through expression and interaction, help shape our future together at Burning Man.</p>
+<p>What future will you create?</p>
+<br>
+<br>
+<div class="fluid_container">
+<div class="embed-responsive embed-responsive-16by9">
+<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/BP9mv07QVgA?start=1370&rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<br>
+<p class="text-center italic">
+Burning Man Arts video, which includes a presentation by Antwane Lee on The Solar Shrine Project.</p>
+</div>
+<br>
+<br>
+<div class="fluid_container">
+<div class="embed-responsive embed-responsive-16by9">
+<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/c9ra2YIElNg?start=1639&rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<br>
+<p class="text-center italic">
+Burning Man Arts video, which includes a presentation by Antwane Lee on The Solar Shrine Project.</p>
+</div>
+<br>
+<br>
+<div class="fluid_container">
+<iframe height="200px" width="100%" frameborder="no" scrolling="no" seamless src="https://player.simplecast.com/49678dbe-e8a4-4ec8-9620-8f27bc7423be?t=30m0s&dark=true"></iframe>
+<br>
+<p class="text-center italic">
+Burning Man Arts podcast, which included conversation with Antwane Lee on The Solar Shrine Project.</p>
+</div>
+<br>
+<br>
+<h4>What is Afrofuturism?</h4>
+<p>Afrofuturism is a cultural and artistic aesthetic which explores the intersections between the arts, history, mythology, science-fiction, and politics from a Black cultural lens. This movement is multi-disciplinary and envisions futures from African and African diasporic experiences. Afrofuturism is personified in the music of Erykah Badu, Earth Wind and Fire, Afrika Bambaataa, George Clinton and Parliament Funkadelic, Janelle Monae, Flying Lotus, Sun Ra, FKA Twigs, and more. Writers like Octavia Butler, Samuel Delany, Nnedi Okorafor, and Eve Ewing exemplify it in their works. The influence of Afrofuturism is seen in movies like Black Panther, Brother from Another Planet, and Space is the Place. Artists such as Basquiat, Angelbert Metoyer, Hebru Brantley, and Derrick Adams help personify it visually.  The civil rights movement itself can be seen as an example of Afrofuturism as people like Medgar Evers, Thurgood Marshall, and Dr. Martin Luther King, Jr. imagined and helped create a different reality/future where people of color had equal rights. Afrofuturism, in this way, is an aesthetic lens through which one can intersect the past and present to envision the future.</p>
+<p>In line with the Burning Man 2020 'The Multiverse' theme, there is a theory in Afrofuturism called Black Quantum Futurism by artist, writer, and activist Rasheedah Phillips. The theory uses art and literature as an approach to living and experiencing reality, by way of manipulating space-time, in order to see possible futures or multiverses. A practical example of this are the traditional divination practices of West African ethnic groups like the Yoruba who use sacred texts and the Ifa Oracle, to understand present conditions, intervene by connecting to the spiritual dimensions, and in turn, manifest different outcomes/futures for their communities.</p>
+<p>Come with us on this journey, connect to our history, celebrate our present, and envision our future together at The Solar Shrine.</p>
+</div>
+{% endblock %}
+
+{% endblock %}
