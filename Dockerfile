@@ -6,18 +6,18 @@ RUN apt-get -y update \
 
 WORKDIR /opt
 
-RUN git clone https://github.com/eevelweezel/solarshrine-azure.git
+RUN git clone https://github.com/eevelweezel/solarshrine-azure.git app
 
-WORKDIR /opt/solarshrine-azure
+WORKDIR /opt/app
 
 RUN set -e \
-    && python -m venv /venv \
-    && /venv/bin/pip install --upgrade pip setuptools wheel \
-    && /venv/bin/pip install --no-cache-dir -r requirements.txt
+    && python -m venv venv \
+    && venv/bin/pip install --upgrade pip setuptools wheel \
+    && venv/bin/pip install --no-cache-dir -r requirements.txt
 
-ENV PATH="$PATH:/opt/venv/bin"
+ENV PATH="$PATH:/opt/app/venv/bin"
 ENV PYTHONPATH=.
 
-EXPOSE 8000
+EXPOSE 8080
 
-CMD ["gunicorn", "--bind", ":8000", "--workers", "1", "solar.wsgi:application"]
+ENTRYPOINT gunicorn --bind 127.0.0.1:8080 solar.wsgi:application
