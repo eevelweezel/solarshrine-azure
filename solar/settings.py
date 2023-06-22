@@ -42,7 +42,6 @@ else:
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
-
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '127.0.0.1').split(',')
 
@@ -50,8 +49,8 @@ MAIL_RECIPIENT = os.getenv('DJANGO_MAIL_RECIPIENT')
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = os.getenv('DJANGO_EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('DJANGO_EMAIL_PWD')
+EMAIL_HOST_USER = os.getenv('DJANGO_EMAIL_HOST_USER', 'foo@on.you')
+EMAIL_HOST_PASSWORD = os.getenv('DJANGO_EMAIL_PWD', '')
 #EMAIL_USE_SSL = True
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -197,3 +196,8 @@ def get_linux_ec2_private_ip():
 private_ip = get_linux_ec2_private_ip()
 if private_ip:
     ALLOWED_HOSTS.append(private_ip)
+
+try:
+    from solar.settings_local import *
+except Exception:
+    pass

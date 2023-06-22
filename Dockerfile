@@ -1,23 +1,26 @@
-FROM python:3.11.3-slim-bullseye
+FROM python:3.11-slim-bullseye
 
 RUN apt-get -y update \
     && apt-get -y upgrade \
     && apt-get -y install git libjpeg-dev zlib1g-dev libpq-dev gcc
 
-WORKDIR /opt
-
-RUN git clone https://github.com/eevelweezel/solarshrine-azure.git app
 
 WORKDIR /opt/app
 
-RUN set -e \
-    && python -m venv venv \
-    && venv/bin/pip install --upgrade pip setuptools wheel \
-    && venv/bin/pip install --no-cache-dir -r requirements.txt
+COPY . .
+# try w/o venv...
+#RUN python -m venv venv \
+#    && venv/bin/pip install --upgrade pip setuptools wheel \
+#    && venv/bin/pip install --no-cache-dir -r requirements.txt \
+#    && source venv/bin/activate
+RUN pip install --upgrade pip setuptools wheel
+RUN pip install --no-cache-dir -r requirements.txt
 
-ENV PATH="$PATH:/opt/app/venv/bin"
+
+ENV PATH="$PATH:/opt/app"
 ENV PYTHONPATH=.
 
-EXPOSE 8080
+EXPOSE 8000
 
-ENTRYPOINT gunicorn --bind 127.0.0.1:8080 solar.wsgi:application
+#CMD python manage.py runserver
+ENTRYPOINT ["gunicorn", "--bind", ":8000", "solar.wsgi:application"]
